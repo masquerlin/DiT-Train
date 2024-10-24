@@ -1,0 +1,6 @@
+/model/*.pth
+/data/*/
+/__pycache__
+/test*
+/*.log
+/dit_training
