@@ -47,9 +47,9 @@ def run_inference(model):
         steps = diffusion_instance.denoise(model, x, y)
         final = []
         for i in range(max_t,0,-max_t//16):
-            idx=int(max_t/15)*(i+1)
-            final_img=steps[idx]
+            final_img=steps[i]
             final.append(final_img)
+        final.reverse()
     model.train()
     return final    
     
