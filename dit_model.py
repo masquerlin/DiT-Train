@@ -138,7 +138,7 @@ class DIT(nn.Module):
 
 class diffusion_part:
     def __init__(self) -> None:
-        self.beita = torch.linspace(0.001, 0.02, max_t)
+        self.beita = torch.linspace(0.0001, 0.02, max_t)
         self.alpha = 1 - self.beita
         self.alpha_cumprod = torch.cumprod(self.alpha, dim=-1)
         self.alpha_cumprod_back = torch.cat((torch.tensor([1.0]), self.alpha_cumprod[:-1]), dim=-1)
@@ -167,7 +167,7 @@ class diffusion_part:
                     x - (1-alpha[t].view(x.size(0), 1, 1, 1))/torch.sqrt(1-alpha_cumprod[t].view(x.size(0), 1, 1, 1))*noise
                 )
                 if time != 0:
-                    x = temp + torch.randn_like(x) * torch.sqrt(varance[t].view(x.size(0), 1, 1, 1).to(device))
+                    x = temp + torch.randn_like(x) * torch.sqrt(varance[t].view(x.size(0), 1, 1, 1))
                 else:
                     x = temp
                 x = torch.clamp(x, -1.0, 1.0).detach()

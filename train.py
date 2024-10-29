@@ -10,13 +10,13 @@ import torchvision
 # 创建 TensorBoard writer
 writer = SummaryWriter('./dit_training',filename_suffix='masquerlin_dit')
 
-
 panda_data_set = panda_data(data_path='./data/Pandas')
 print(len(panda_data_set))
 diffusion_instance = diffusion_part()
 model = DIT(img_size=256, patch_size=4, channel=3, dit_num=3, head=6, label_num=1, emb_size=64).to(device)
 if os.path.exists(model_save_path):
-    model.load_state_dict(torch.load(model_save_path, device=device))
+    print('增量')
+    model.load_state_dict(torch.load(model_save_path))
 
 # 记录模型结构到 TensorBoard
 dummy_input = torch.randn(1, 3, 256, 256).to(device)
@@ -87,7 +87,7 @@ for epoch_use in range(0, epoch):
     print(f'Epoch: {epoch_use + 1}, Average Loss: {avg_epoch_loss:.6f}')
     gen_images = run_inference(model)
     visualize_batch(writer, gen_images, 'Generated Images', epoch_use)
-    torch.save(model.state_dict(), f'./model/dit_train.pth')
+    torch.save(model.state_dict(), model_save_path)
 writer.close()
     
 
