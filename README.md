@@ -7,7 +7,8 @@ This project implements an image generation model based on Diffusion Transformer
 ### Architecture Overview
 
 ![DiT Model Architecture](./assets/dit_graph.png)
-
+![DiT Model Architecture Canva](./assets/Dit技术路线.png)
+![Dit Pdf](./assets/Dit技术路线.pdf)
 The above figure shows the complete DiT model architecture, which mainly includes:
 - Input Layer: Including image patch embeddings, time embeddings, and label embeddings
 - Backbone Network: 3 DiT blocks, each containing self-attention layers and feed-forward networks

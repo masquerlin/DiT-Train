@@ -7,7 +7,8 @@
 ### 架构概览
 
 ![DiT模型架构](./assets/dit_graph.png)
-
+![DiT模型架构 Canva](./assets/Dit技术路线.png)
+![Dit Pdf](./assets/Dit技术路线.pdf)
 上图展示了完整的DiT模型架构，主要包含：
 - 输入层：包括图像patch嵌入、时间嵌入和标签嵌入
 - 主干网络：3个DiT块，每个块包含自注意力层和前馈网络
